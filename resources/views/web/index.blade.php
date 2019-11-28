@@ -428,6 +428,14 @@
                                     <span class="date">{!! $blog->create_at !!}</span>
                                     <h2><a href="blog-detail.html">{!! Str::limit($blog->title, 45) !!}</a></h2>
                                     <p>{!! Str::limit($blog->contents, 200)!!}</p>
+                                    @if (Auth::check())
+                                        <div class="panel-footer">
+                                            <favorite
+                                                    :post={{ $blog->id }}
+                                                            :favorited={{ $blog->favorited() ? 'true' : 'false' }}
+                                            ></favorite>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         @endforeach

@@ -6,13 +6,16 @@ use App\User;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Favorite;
+use Illuminate\Support\Facades\Auth;
+
 
 /**
  * Class Blog
  * @package App\Models
  * @version November 28, 2019, 10:52 am UTC
  *
- * @property users user
+ * @property User user
  * @property string title
  * @property string contents
  * @property string image
@@ -63,5 +66,12 @@ class Blog extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function favorited()
+    {
+        return (bool)Favorite::where('user_id', Auth::id())
+            ->where('blog_id', $this->id)
+            ->first();
     }
 }
