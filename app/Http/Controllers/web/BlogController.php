@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
+use App\Models\Blog;
 use App\Repositories\BlogRepository;
 use App\Http\Controllers\AppBaseController;
+use Auth;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Str;
+use Ramsey\Uuid\Uuid;
 use Response;
 
 class BlogController extends AppBaseController
@@ -54,13 +58,28 @@ class BlogController extends AppBaseController
      */
     public function store(CreateBlogRequest $request)
     {
-        $input = $request->all();
+        try {
+            $input = $request->all();
+            $user = Auth::user()->id;
+            if ($request->hasFile('image')) {
+                $file_name = $this->saveFile($request);
+                $profile = new Blog();
+                $profile->fill($request->all());
+                $profile->image = $file_name;
+                $profile->user_id = $user;
+                $profile->save();
+                Flash::success('Blog saved successfully.');
+                return redirect(route('blogs.index'));
+            } else {
+                $profile = $this->blogRepository->create($input);
+                Flash::success('Blog saved successfully.');
+                return redirect(route('blogs.index'));
+            }
 
-        $blog = $this->blogRepository->create($input);
+        } catch (\Exception $exception) {
+            return response()->json(["message" => $exception->getMessage(), 'status' => false]);
+        }
 
-        Flash::success('Blog saved successfully.');
-
-        return redirect(route('blogs.index'));
     }
 
     /**
@@ -133,9 +152,9 @@ class BlogController extends AppBaseController
      *
      * @param int $id
      *
+     * @return Response
      * @throws \Exception
      *
-     * @return Response
      */
     public function destroy($id)
     {
@@ -152,5 +171,19 @@ class BlogController extends AppBaseController
         Flash::success('Blog deleted successfully.');
 
         return redirect(route('blogs.index'));
+    }
+
+
+    public function saveFile($request)
+    {
+        $random = Str::random(10);
+        if ($request->hasfile('image')) {
+            $image = $request->file('image');
+            $name = 'image_' . $random . ".jpg";
+            $image->move(public_path() . '/blog/', $name);
+            $name = url("blog/$name");
+            return $name;
+        }
+        return false;
     }
 }
