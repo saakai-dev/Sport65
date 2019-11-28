@@ -132,19 +132,34 @@ class BlogController extends AppBaseController
      */
     public function update($id, UpdateBlogRequest $request)
     {
-        $blog = $this->blogRepository->find($id);
 
-        if (empty($blog)) {
-            Flash::error('Blog not found');
+        try {
+            $user = Auth::user()->id;
+            $blog = $this->blogRepository->find($id);
+            if (empty($blog)) {
+                Flash::error('Blog not found');
 
-            return redirect(route('blogs.index'));
+                return redirect(route('blogs.index'));
+            }
+            if ($request->hasFile('image')) {
+                $file_name = $this->saveFile($request);
+                $blog->fill($request->all());
+                $blog->image = $file_name;
+                $blog->user_id = $user;
+                $blog->save();
+                Flash::success('Blog updated successfully.');
+                return redirect(route('blogs.index'));
+            } else {
+                $this->blogRepository->update($request->all(), $id);
+                Flash::success('Blog updated successfully.');
+                return redirect(route('blogs.index'));
+            }
+
+        } catch
+        (\Exception $exception) {
+            return response()->json(["message" => $exception->getMessage(), 'status' => false]);
         }
 
-        $blog = $this->blogRepository->update($request->all(), $id);
-
-        Flash::success('Blog updated successfully.');
-
-        return redirect(route('blogs.index'));
     }
 
     /**
