@@ -27,3 +27,7 @@ Route::resource('blogs', 'BlogController');
 Route::resource('news', 'NewController');
 
 Route::resource('matches', 'MatchController');
+
+Route::resource('matchFutures', 'MatchFutureController');
+
+Route::resource('siteReviews', 'SiteReviewController');

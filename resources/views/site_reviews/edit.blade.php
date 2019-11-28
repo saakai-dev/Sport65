@@ -1,0 +1,23 @@
+@extends('layouts.app')
+
+@section('content')
+    <section class="content-header">
+        <h1>
+            Site Review
+        </h1>
+   </section>
+   <div class="content">
+       @include('adminlte-templates::common.errors')
+       <div class="box box-primary">
+           <div class="box-body">
+               <div class="row">
+                   {!! Form::model($siteReview, ['route' => ['siteReviews.update', $siteReview->id], 'method' => 'patch']) !!}
+
+                        @include('site_reviews.fields')
+
+                   {!! Form::close() !!}
+               </div>
+           </div>
+       </div>
+   </div>
+@endsection
