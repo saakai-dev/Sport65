@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\User;
 use Eloquent as Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -10,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @package App\Models
  * @version November 28, 2019, 10:52 am UTC
  *
- * @property \App\Models\users user
+ * @property users user
  * @property string title
  * @property string contents
  * @property string image
@@ -21,17 +23,15 @@ class Blog extends Model
     use SoftDeletes;
 
     public $table = 'blogs';
-    
+
 
     protected $dates = ['deleted_at'];
-
 
 
     public $fillable = [
         'title',
         'contents',
         'image',
-        'user_id'
     ];
 
     /**
@@ -58,10 +58,10 @@ class Blog extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      **/
     public function user()
     {
-        return $this->belongsTo(\App\Models\users::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }
