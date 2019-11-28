@@ -23,3 +23,7 @@
     <a href="{!! route('points.index') !!}"><i class="fa fa-edit"></i><span>Points</span></a>
 </li>
 
+<li class="{{ Request::is('multiMedia*') ? 'active' : '' }}">
+    <a href="{!! route('multiMedia.index') !!}"><i class="fa fa-edit"></i><span>Multi Media</span></a>
+</li>
+

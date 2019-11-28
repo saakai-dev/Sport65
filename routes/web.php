@@ -34,3 +34,5 @@ Route::resource('matchFutures', 'web\MatchFutureController');
 Route::resource('siteReviews', 'web\SiteReviewController');
 
 Route::resource('points', 'PointController');
+
+Route::resource('multiMedia', 'MultiMediaController');
