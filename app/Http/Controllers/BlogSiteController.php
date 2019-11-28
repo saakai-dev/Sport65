@@ -43,10 +43,10 @@ class BlogSiteController extends AppBaseController
         if (empty($blog)) {
             Flash::error('Blog not found');
 
-            return redirect(route('web.'));
+            return redirect(route('p_blog'));
         }
 
-        return view('blogs.show')->with('blog', $blog);
+        return view('web.blogContent')->with('blog', $blog);
     }
 
 
@@ -56,12 +56,18 @@ class BlogSiteController extends AppBaseController
      * @param Blog $blog
      * @return Response
      */
-    public function favoritePost(Blog $blog)
+    public function favoritePost(Request $request, $id)
     {
-        Auth::user()->favorites()->attach($blog->id);
+        Auth::user()->favorites()->attach($id);
 
         return back();
     }
+//    function favoritePost(Blog $blog)
+//    {
+//        Auth::user()->favorites()->attach($blog->id);
+//
+//        return back();
+//    }
 
     /**
      * Unfavorite a particular post
