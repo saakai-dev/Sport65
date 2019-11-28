@@ -29,6 +29,8 @@
       rel="stylesheet">
 <!-- end font family -->
 <link rel="stylesheet" href="{{asset('css/3dslider.css')}}"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 
 @yield('css')
@@ -40,7 +42,8 @@
 
 
 <!-- jQuery 3.1.1 -->
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+{{--<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>--}}
+<script src="{!! asset('js/app.js') !!}"></script>
 <script src="{{asset('js/3dslider.js')}}"></script>
 
 

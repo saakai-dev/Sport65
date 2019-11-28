@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use App\User;
+use Auth;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Favorite;
-use Illuminate\Support\Facades\Auth;
 
 
 /**
@@ -70,7 +70,7 @@ class Blog extends Model
 
     public function favorited()
     {
-        return (bool)Favorite::where('user_id', Auth::id())
+        return (bool)Favorite::where('user_id', Auth::user()->id)
             ->where('blog_id', $this->id)
             ->first();
     }

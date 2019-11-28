@@ -39,6 +39,8 @@ Route::resource('multiMedia', 'MultiMediaController');
 
 Route::resource('topTeams', 'TopTeamController');
 
+Route::get('p_blog', 'BlogSiteController@index');
+Route::get('blog/{id}', 'BlogSiteController@show');
 Route::post('favorite/{blog}', 'web\BlogController@favoritePost');
 Route::post('unfavorite/{blog}', 'web\BlogController@unFavoritePost');
 
