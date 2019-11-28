@@ -20,14 +20,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index');
-Route::get('/','web\HomeController@index');
+Route::get('/', 'web\HomeController@index');
 
-Route::resource('blogs', 'BlogController');
+Route::resource('blogs', 'web\BlogController');
 
-Route::resource('news', 'NewController');
+Route::resource('news', 'web\NewController');
 
-Route::resource('matches', 'MatchController');
+Route::resource('matches', 'web\MatchController');
 
-Route::resource('matchFutures', 'MatchFutureController');
+Route::resource('matchFutures', 'web\MatchFutureController');
 
-Route::resource('siteReviews', 'SiteReviewController');
+Route::resource('siteReviews', 'web\SiteReviewController');

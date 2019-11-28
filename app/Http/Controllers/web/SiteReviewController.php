@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
 use App\Http\Requests\CreateSiteReviewRequest;
 use App\Http\Requests\UpdateSiteReviewRequest;
