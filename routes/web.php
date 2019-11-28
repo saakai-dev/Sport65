@@ -38,3 +38,8 @@ Route::resource('points', 'PointController');
 Route::resource('multiMedia', 'MultiMediaController');
 
 Route::resource('topTeams', 'TopTeamController');
+
+Route::post('favorite/{blog}', 'web\BlogController@favoritePost');
+Route::post('unfavorite/{blog}', 'web\BlogController@unFavoritePost');
+
+Route::get('my_favorites', 'web\UsersController@myFavorites')->middleware('auth');
