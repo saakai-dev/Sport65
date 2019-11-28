@@ -5,17 +5,15 @@
                 <th>Title</th>
         <th>Contents</th>
         <th>Image</th>
-        <th>User Id</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
         <tbody>
         @foreach($blogs as $blog)
             <tr>
-                <td>{!! $blog->title !!}</td>
-            <td>{!! $blog->contents !!}</td>
-            <td>{!! $blog->image !!}</td>
-            <td>{!! $blog->user_id !!}</td>
+                <td>{!! Str::limit($blog->title, '50') !!}</td>
+            <td>{!! Str::limit($blog->contents, 200) !!}</td>
+            <td><img src="{!! $blog->image !!}" width="100px" height="50px"></td>
                 <td>
                     {!! Form::open(['route' => ['blogs.destroy', $blog->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

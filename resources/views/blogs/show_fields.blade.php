@@ -13,14 +13,9 @@
 <!-- Image Field -->
 <div class="form-group">
     {!! Form::label('image', 'Image:') !!}
-    <p>{!! $blog->image !!}</p>
+    <img src="{!! $blog->image !!}">
 </div>
 
-<!-- User Id Field -->
-<div class="form-group">
-    {!! Form::label('user_id', 'User Id:') !!}
-    <p>{!! $blog->user_id !!}</p>
-</div>
 
 <!-- Created At Field -->
 <div class="form-group">

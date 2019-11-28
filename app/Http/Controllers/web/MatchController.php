@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Requests\CreateMatchRequest;
 use App\Http\Requests\UpdateMatchRequest;
+use App\Models\Match;
 use App\Repositories\MatchRepository;
 use App\Http\Controllers\AppBaseController;
+use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Str;
 
 class MatchController extends AppBaseController
 {
@@ -54,13 +58,28 @@ class MatchController extends AppBaseController
      */
     public function store(CreateMatchRequest $request)
     {
-        $input = $request->all();
 
-        $match = $this->matchRepository->create($input);
+//        try {
+            $input = $request->all();
+            if ($request->hasFile('image_one')) {
+                $file_one = $this->saveImageOne($request);
+                $file_two = $this->saveImageTwo($request);
+                $profile = new Match();
+                $profile->fill($request->all());
+                $profile->image_one = $file_one;
+                $profile->image_two = $file_two;
+                $profile->save();
+                Flash::success('Match saved successfully.');
+                return redirect(route('matches.index'));
+            } else {
+                $profile = $this->matchRepository->create($input);
+                Flash::success('Match saved successfully.');
+                return redirect(route('matches.index'));
+            }
 
-        Flash::success('Match saved successfully.');
-
-        return redirect(route('matches.index'));
+//        } catch (\Exception $exception) {
+//            return dd($exception);
+//        }
     }
 
     /**
@@ -113,29 +132,60 @@ class MatchController extends AppBaseController
      */
     public function update($id, UpdateMatchRequest $request)
     {
-        $match = $this->matchRepository->find($id);
 
-        if (empty($match)) {
-            Flash::error('Match not found');
+        try {
+            $match = $this->matchRepository->find($id);
+            if (empty($match)) {
+                Flash::error('Match not found');
 
-            return redirect(route('matches.index'));
+                return redirect(route('matches.index'));
+            }
+            if ($request->hasFile('image_one')) {
+                $file_nameOne = $this->saveImageOne($request);
+                $match->fill($request->all());
+                $match->image_one = $file_nameOne;
+                $match->save();
+                Flash::success('Match updated successfully.');
+                return redirect(route('matches.index'));
+            }
+            if ($request->hasFile('image_two')) {
+                $file_nameTwo = $this->saveImageTwo($request);
+                $match->fill($request->all());
+                $match->image_two = $file_nameTwo;
+                $match->save();
+                Flash::success('Match updated successfully.');
+                return redirect(route('matches.index'));
+            }
+            if ($request->hasFile('image_one') and $request->hasFile('image_two')) {
+                $file_nameOne = $this->saveImageOne($request);
+                $file_nameTwo = $this->saveImageTwo($request);
+                $match->fill($request->all());
+                $match->image_one = $file_nameOne;
+                $match->image_two = $file_nameTwo;
+                $match->save();
+                Flash::success('Match updated successfully.');
+                return redirect(route('matches.index'));
+            } else {
+                $this->matchRepository->update($request->all(), $id);
+                Flash::success('Match updated successfully.');
+                return redirect(route('matches.index'));
+            }
+
+        } catch
+        (\Exception $exception) {
+            return response()->json(["message" => $exception->getMessage(), 'status' => false]);
         }
-
-        $match = $this->matchRepository->update($request->all(), $id);
-
-        Flash::success('Match updated successfully.');
-
-        return redirect(route('matches.index'));
     }
+
 
     /**
      * Remove the specified Match from storage.
      *
      * @param int $id
      *
+     * @return Response
      * @throws \Exception
      *
-     * @return Response
      */
     public function destroy($id)
     {
@@ -152,5 +202,31 @@ class MatchController extends AppBaseController
         Flash::success('Match deleted successfully.');
 
         return redirect(route('matches.index'));
+    }
+
+    public function saveImageOne($request)
+    {
+        $random = Str::random(10);
+        if ($request->hasfile('image_one')) {
+            $image = $request->file('image_one');
+            $name = 'image_' . $random . ".jpg";
+            $image->move(public_path() . '/match/', $name);
+            $name = url("match/$name");
+            return $name;
+        }
+        return false;
+    }
+
+    public function saveImageTwo($request)
+    {
+        $random = Str::random(10);
+        if ($request->hasfile('image_two')) {
+            $image = $request->file('image_two');
+            $name = 'image_' . $random . ".jpg";
+            $image->move(public_path() . '/match/', $name);
+            $name = url("match/$name");
+            return $name;
+        }
+        return false;
     }
 }

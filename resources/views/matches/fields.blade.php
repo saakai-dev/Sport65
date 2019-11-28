@@ -3,7 +3,20 @@
     {!! Form::label('title', 'Title:') !!}
     {!! Form::text('title', null, ['class' => 'form-control']) !!}
 </div>
+<div class="form-group col-sm-6">
+    {!! Form::label('match_date', 'Match Date:') !!}
 
+        <div class="form-group">
+            <div class='input-group date' id='datetimepicker1'>
+                <input type='text' name="match_date" class="form-control" />
+                <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+            </div>
+        </div>
+    </div>
+
+</div>
 <!-- Team One Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('team_one', 'Team One:') !!}

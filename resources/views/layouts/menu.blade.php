@@ -4,7 +4,7 @@
 </li>
 
 <li class="{{ Request::is('news*') ? 'active' : '' }}">
-    <a href="{!! route('news.index') !!}"><i class="fa fa-edit"></i><span>News</span></a>
+    <a href="{!! route('news66.index') !!}"><i class="fa fa-edit"></i><span>News</span></a>
 </li>
 
 <li class="{{ Request::is('matches*') ? 'active' : '' }}">

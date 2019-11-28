@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string team_two
  * @property string image_one
  * @property string image_two
+ * @property string match_date
  */
 class Match extends Model
 {
@@ -32,7 +33,8 @@ class Match extends Model
         'team_one',
         'team_two',
         'image_one',
-        'image_two'
+        'image_two',
+        'match_date'
     ];
 
     /**
@@ -46,7 +48,7 @@ class Match extends Model
         'team_two' => 'string',
         'image_one' => 'string',
         'image_two' => 'string',
-        'match_date' => 'datetime'
+//        'match_date' => 'datetime'
     ];
 
     /**
@@ -59,7 +61,8 @@ class Match extends Model
         'team_one' => 'required',
         'team_two' => 'required',
         'image_one' => 'required',
-        'image_two' => 'required'
+        'image_two' => 'required',
+        'match_date' => 'required'
     ];
 
     

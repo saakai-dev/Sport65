@@ -11,7 +11,6 @@ use Auth;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Str;
-use Ramsey\Uuid\Uuid;
 use Response;
 
 class BlogController extends AppBaseController

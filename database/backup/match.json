@@ -68,7 +68,7 @@
   },
   {
     "name": "match_date",
-    "dbType": "datetime",
+    "dbType": "string",
     "htmlType": "",
     "validations": "",
     "searchable": false,

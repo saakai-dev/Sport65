@@ -2,16 +2,16 @@
 
 namespace App\Repositories;
 
-use App\Models\New;
+use App\Models\News;
 use App\Repositories\BaseRepository;
 
 /**
- * Class NewRepository
+ * Class NewsRepository
  * @package App\Repositories
  * @version November 28, 2019, 10:55 am UTC
 */
 
-class NewRepository extends BaseRepository
+class NewsRepository extends BaseRepository
 {
     /**
      * @var array
@@ -37,6 +37,6 @@ class NewRepository extends BaseRepository
      **/
     public function model()
     {
-        return New::class;
+        return News::class;
     }
 }

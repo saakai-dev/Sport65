@@ -20,11 +20,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index');
-Route::get('/', 'web\HomeController@index');
+Route::get('/', 'web\HomeSiteController@index');
 
 Route::resource('blogs', 'web\BlogController');
 
-Route::resource('news', 'web\NewController');
+Route::resource('news', 'web\NewsController');
+Route::resource('news66', 'web\NewsController');
 
 Route::resource('matches', 'web\MatchController');
 

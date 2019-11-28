@@ -20,7 +20,7 @@ class CreateMatchesTable extends Migration
             $table->string('team_two');
             $table->string('image_one');
             $table->string('image_two');
-            $table->datetime('match_date');
+            $table->string('match_date');
             $table->timestamps();
             $table->softDeletes();
         });
