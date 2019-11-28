@@ -25,3 +25,5 @@ Route::get('/','web\HomeController@index');
 Route::resource('blogs', 'BlogController');
 
 Route::resource('news', 'NewController');
+
+Route::resource('matches', 'MatchController');

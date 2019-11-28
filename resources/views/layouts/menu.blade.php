@@ -26,3 +26,7 @@
     <a href="{!! route('news.index') !!}"><i class="fa fa-edit"></i><span>News</span></a>
 </li>
 
+<li class="{{ Request::is('matches*') ? 'active' : '' }}">
+    <a href="{!! route('matches.index') !!}"><i class="fa fa-edit"></i><span>Matches</span></a>
+</li>
+
