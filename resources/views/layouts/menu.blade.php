@@ -27,3 +27,7 @@
     <a href="{!! route('multiMedia.index') !!}"><i class="fa fa-edit"></i><span>Multi Media</span></a>
 </li>
 
+<li class="{{ Request::is('topTeams*') ? 'active' : '' }}">
+    <a href="{!! route('topTeams.index') !!}"><i class="fa fa-edit"></i><span>Top Teams</span></a>
+</li>
+

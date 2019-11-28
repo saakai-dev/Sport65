@@ -12,7 +12,7 @@
     "inView": false
   },
   {
-    "name": "title",
+    "name": "name",
     "dbType": "string",
     "htmlType": "text",
     "validations": "",
@@ -23,10 +23,21 @@
     "inIndex": true
   },
   {
-    "name": "video",
+    "name": "logo",
     "dbType": "string",
     "htmlType": "file",
     "validations": "required",
+    "searchable": true,
+    "fillable": true,
+    "primary": false,
+    "inForm": true,
+    "inIndex": true
+  },
+  {
+    "name": "description",
+    "dbType": "text",
+    "htmlType": "textarea",
+    "validations": "",
     "searchable": true,
     "fillable": true,
     "primary": false,

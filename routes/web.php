@@ -36,3 +36,5 @@ Route::resource('siteReviews', 'web\SiteReviewController');
 Route::resource('points', 'PointController');
 
 Route::resource('multiMedia', 'MultiMediaController');
+
+Route::resource('topTeams', 'TopTeamController');
