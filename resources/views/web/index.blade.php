@@ -65,7 +65,7 @@
                                                 <ul class="nav navbar-nav">
                                                     <li class="active"><a href="index.html">Home</a></li>
                                                     <li><a href="about.html">About</a></li>
-                                                    <li><a href="team.html">Team</a></li>
+                                                    <li><a href="team.html">Favorites</a></li>
                                                     <li><a href="news.html">News</a></li>
                                                     <li class="dropdown mega-dropdown">
                                                         <a href="match" class="dropdown-toggle" data-toggle="dropdown">Match<span
