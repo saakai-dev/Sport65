@@ -44,12 +44,6 @@
                                         <p>{!! Str::limit($blog->contents, 190) !!}</p>
                                         <div class="full">
                                             <a class="btn" href="/p_blog/{!! $blog->id !!}">Read More</a>
-                                            @if (Auth::check())
-                                                {!! Form::open(['url' => 'addFavorites', 'id' => 'ajax']) !!}
-                                                {{--                                            <input type="text" hidden name="{!! $blog->id !!}" class="form-control">--}}
-                                                <button class="button"><span class="fa fa-heart"></span></button>
-
-                                                {!! Form::close() !!}@endif
                                         </div>
 
 

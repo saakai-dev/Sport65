@@ -29,7 +29,7 @@
                     <div class="feature-post small-blog">
                         <div class="col-md-5">
                             <div class="feature-img">
-                                <img src="{!! $blog->image !!}"  class="img-responsive"
+                                <img src="{!! $blog->image !!}" class="img-responsive"
                                      alt="#"/>
                             </div>
                         </div>
@@ -46,9 +46,14 @@
                                     <p>{!! $blog->contents!!}</p>
                                     <div class="full">
                                         @if (Auth::check())
-                                            {!! Form::open(['url' => 'favorite/'.$blog->id, 'id' => 'ajax']) !!}
-                                            <button class="button"><span class="fa fa-heart"></span></button>
-
+                                            {!!  !!}
+                                            @if()
+                                                {!! Form::open(['url' => 'unfavorite/'.$blog->id, 'id' => 'ajax']) !!}
+                                                <button class="button button-red"><span class="fa fa-heart"></span></button>
+                                            @else
+                                                {!! Form::open(['url' => 'favorite/'.$blog->id, 'id' => 'ajax']) !!}
+                                                <button class="button button-blue"><span class="fa fa-heart"></span></button>
+                                            @endif
                                             {!! Form::close() !!}@endif
                                     </div>
                                 </div>
