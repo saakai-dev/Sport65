@@ -19,3 +19,7 @@
     <a href="{!! route('siteReviews.index') !!}"><i class="fa fa-edit"></i><span>Site Reviews</span></a>
 </li>
 
+<li class="{{ Request::is('points*') ? 'active' : '' }}">
+    <a href="{!! route('points.index') !!}"><i class="fa fa-edit"></i><span>Points</span></a>
+</li>
+
