@@ -12,7 +12,7 @@
     "inView": false
   },
   {
-    "name": "name",
+    "name": "title",
     "dbType": "string",
     "htmlType": "text",
     "validations": "required",

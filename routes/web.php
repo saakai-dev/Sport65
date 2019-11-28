@@ -21,3 +21,7 @@ Auth::routes();
 
 //Route::get('/home', 'HomeController@index');
 Route::get('/','web\HomeController@index');
+
+Route::resource('blogs', 'BlogController');
+
+Route::resource('news', 'NewController');
