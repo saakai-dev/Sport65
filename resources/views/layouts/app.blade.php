@@ -35,7 +35,7 @@
 
             <!-- Logo -->
             <a href="#" class="logo">
-                <b>DetaTech</b>
+                <b>SPORT65</b>
             </a>
 
             <!-- Header Navbar -->
