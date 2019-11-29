@@ -1,4 +1,3 @@
-
 <li class="{{ Request::is('blogs*') ? 'active' : '' }}">
     <a href="{!! route('blogs.index') !!}"><i class="fa fa-edit"></i><span>Blogs</span></a>
 </li>
@@ -25,5 +24,10 @@
 
 <li class="{{ Request::is('topTeams*') ? 'active' : '' }}">
     <a href="{!! route('topTeams.index') !!}"><i class="fa fa-edit"></i><span>Top Teams</span></a>
+</li>
+
+
+<li class="{{ Request::is('ligue*') ? 'active' : '' }}">
+    <a href="{!! route('ligues.index') !!}"><i class="fa fa-edit"></i><span>Ligue</span></a>
 </li>
 
