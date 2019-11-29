@@ -24,7 +24,7 @@
                     <div class="col-md-3">
                         <div class="message-box">
                             <h3>{!! $ligue->title !!}</h3>
-                            <img src="{!! $ligue->logo !!}">
+                            <img width="150px" height="150px" src="{!! $ligue->logo !!}">
                         </div>
                     </div>
                 @endforeach
@@ -46,7 +46,6 @@
                 {{--                        </tbody>--}}
                 {{--                    </table>--}}
             </div>
-        </div>
         </div>
     </section>
 

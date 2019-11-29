@@ -25,7 +25,7 @@ class TopTeamSiteController extends AppBaseController
      */
     public function index()
     {
-        $topTeams = $this->topTeamRepository->all();
+        $topTeams = $this->topTeamRepository->paginate(6);
 
         return view('web.team')
             ->with('topTeams', $topTeams);

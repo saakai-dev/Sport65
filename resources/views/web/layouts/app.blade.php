@@ -97,8 +97,8 @@
                                         <div class="collapse navbar-collapse js-navbar-collapse">
                                             <ul class="nav navbar-nav">
                                                 <li class="active"><a href="/">Home</a></li>
-                                                <li><a href="about.html">About</a></li>
-                                                <li><a href="team.html">Team</a></li>
+                                                <li><a href="/p_ligue">Top Ligue</a></li>
+                                                <li><a href="/Teams">Team</a></li>
                                                 <li><a href="{!! asset('/p_blog') !!}">Blog</a></li>
                                                 <li><a href="{!! asset('/my_favorites') !!}">Favorites</a></li>
                                             </ul>
@@ -191,7 +191,7 @@
 
 
     <!-- jQuery 3.1.1 -->
-{{--    <script src="{!! asset('js/app.js') !!}"></script>--}}
+    {{--    <script src="{!! asset('js/app.js') !!}"></script>--}}
     <!-- ALL JS FILES -->
     <script src="{{asset('js/all.js')}}"></script>
     <!-- ALL PLUGINS -->
