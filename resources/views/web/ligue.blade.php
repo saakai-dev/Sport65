@@ -9,7 +9,7 @@
         <div class="container">
             <h3>Ligue List</h3>
             <ul class="breadcrumb">
-                <li><a href="/"></a></li>
+                <li><a href="/">Home</a></li>
                 <li class="active">Ligue</li>
             </ul>
         </div>
@@ -20,33 +20,36 @@
     <section id="contant" class="contant main-heading team">
         <div class="row">
             <div class="container">
-                <div class="col-md-3">
-                    <div class="message-box">
-                        <h3>Sudan</h3>
-                        <img src="{!! asset('images/logo.png') !!}">
+                @foreach($ligue as $ligue)
+                    <div class="col-md-3">
+                        <div class="message-box">
+                            <h3>{!! $ligue->title !!}</h3>
+                            <img src="{!! $ligue->logo !!}">
+                        </div>
                     </div>
-{{--                    <table class="table">--}}
-{{--                        <thead>--}}
-{{--                        <tr>--}}
-{{--                            <th scope="col">#</th>--}}
-{{--                            <th scope="col">Name</th>--}}
-{{--                            <th scope="col">Logo</th>--}}
-{{--                        </tr>--}}
-{{--                        </thead>--}}
-{{--                        <tbody>--}}
-{{--                        <tr>--}}
-{{--                            <th scope="row">1</th>--}}
-{{--                            <th scope="row">Sudan</th>--}}
-{{--                            <th scope="row"><img src="{!! asset('images/logo.png') !!}"></th>--}}
-{{--                         --}}
-{{--                        </tr>--}}
-{{--                        </tbody>--}}
-{{--                    </table>--}}
-                </div>
+                @endforeach
+                {{--                    <table class="table">--}}
+                {{--                        <thead>--}}
+                {{--                        <tr>--}}
+                {{--                            <th scope="col">#</th>--}}
+                {{--                            <th scope="col">Name</th>--}}
+                {{--                            <th scope="col">Logo</th>--}}
+                {{--                        </tr>--}}
+                {{--                        </thead>--}}
+                {{--                        <tbody>--}}
+                {{--                        <tr>--}}
+                {{--                            <th scope="row">1</th>--}}
+                {{--                            <th scope="row">Sudan</th>--}}
+                {{--                            <th scope="row"><img src="{!! asset('images/logo.png') !!}"></th>--}}
+                {{--                         --}}
+                {{--                        </tr>--}}
+                {{--                        </tbody>--}}
+                {{--                    </table>--}}
             </div>
+        </div>
         </div>
     </section>
 
-{{--    @foreach($blog as $blog)--}}
+    {{--    @foreach($blog as $blog)--}}
 
 @endsection
