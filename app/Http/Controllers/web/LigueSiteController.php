@@ -16,8 +16,12 @@ class LigueSiteController extends AppBaseController
      */
     public function index()
     {
-        //
+        $ligue = Ligue::paginate();
+
+        return view('web.ligue')
+            ->with('ligue', $ligue);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -32,7 +36,7 @@ class LigueSiteController extends AppBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return Response
      */
     public function store(Request $request)
@@ -43,7 +47,7 @@ class LigueSiteController extends AppBaseController
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Ligue  $ligue
+     * @param \App\Models\Ligue $ligue
      * @return Response
      */
     public function show(Ligue $ligue)
@@ -54,7 +58,7 @@ class LigueSiteController extends AppBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Ligue  $ligue
+     * @param \App\Models\Ligue $ligue
      * @return Response
      */
     public function edit(Ligue $ligue)
@@ -65,8 +69,8 @@ class LigueSiteController extends AppBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Ligue  $ligue
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Ligue $ligue
      * @return Response
      */
     public function update(Request $request, Ligue $ligue)
@@ -77,7 +81,7 @@ class LigueSiteController extends AppBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Ligue  $ligue
+     * @param \App\Models\Ligue $ligue
      * @return Response
      */
     public function destroy(Ligue $ligue)
