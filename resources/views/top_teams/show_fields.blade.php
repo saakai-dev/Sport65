@@ -7,8 +7,7 @@
 <!-- Logo Field -->
 <div class="form-group">
     {!! Form::label('logo', 'Logo:') !!}
-    <p>{!! $topTeam->logo !!}</p>
-</div>
+    <img src="{!! $topTeam->logo !!}" height="350" width="288px"></div>
 
 <!-- Description Field -->
 <div class="form-group">

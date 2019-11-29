@@ -6,104 +6,98 @@
     {{--        <img class="preloader" src="images/loading-img.gif" alt="">--}}
     {{--    </div>--}}
     <!-- END LOADER -->
-        <div class="full-slider">
-            <div id="carousel-example-generic" class="carousel slide">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                </ol>
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    <!-- First slide -->
-                    <div class="item active deepskyblue" data-ride="carousel" data-interval="5000">
-                        <div class="carousel-caption">
-                            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"></div>
-                            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                                <div class="slider-contant" data-animation="animated fadeInRight">
-                                    <h3>If you Don’t Practice<br>You <span
-                                                class="color-yellow">Don’t Derserve</span><br>to win!</h3>
-                                    <p>If you use this site regularly and would like to help keep the site on the
-                                        Internet,<br>
-                                        please consider donating a small sum to help pay..
-                                    </p>
-                                    <button class="btn btn-primary btn-lg">Read More</button>
-                                </div>
+    <div class="full-slider">
+        <div id="carousel-example-generic" class="carousel slide">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <!-- First slide -->
+                <div class="item active deepskyblue" data-ride="carousel" data-interval="5000">
+                    <div class="carousel-caption">
+                        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"></div>
+                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                            <div class="slider-contant" data-animation="animated fadeInRight">
+                                <h3>If you Don’t Practice<br>You <span
+                                            class="color-yellow">Don’t Derserve</span><br>to win!</h3>
+                                <p>If you use this site regularly and would like to help keep the site on the
+                                    Internet,<br>
+                                    please consider donating a small sum to help pay..
+                                </p>
+                                <button class="btn btn-primary btn-lg">Read More</button>
                             </div>
                         </div>
                     </div>
-                    <!-- /.item -->
-                    <!-- Second slide -->
-                    <div class="item skyblue" data-ride="carousel" data-interval="5000">
-                        <div class="carousel-caption">
-                            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"></div>
-                            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                                <div class="slider-contant" data-animation="animated fadeInRight">
-                                    <h3>If you Don’t Practice<br>You <span
-                                                class="color-yellow">Don’t Derserve</span><br>to win!</h3>
-                                    <p>You can make a case for several potential winners of<br>the expanded European
-                                        Championships.</p>
-                                    <button class="btn btn-primary btn-lg">Button</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.item -->
-                    <!-- Third slide -->
-                    <div class="item darkerskyblue" data-ride="carousel" data-interval="5000">
-                        <div class="carousel-caption">
-                            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"></div>
-                            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                                <div class="slider-contant" data-animation="animated fadeInRight">
-                                    <h3>If you Don’t Practice<br>You <span
-                                                class="color-yellow">Don’t Derserve</span><br>to win!</h3>
-                                    <p>You can make a case for several potential winners of<br>the expanded European
-                                        Championships.</p>
-                                    <button class="btn btn-primary btn-lg">Button</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.item -->
                 </div>
-                <!-- /.carousel-inner -->
-                <!-- Controls -->
-                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-            <!-- /.carousel -->
-            <div class="news">
-                <div class="container">
-                    <div class="heading-slider">
-                        <p class="headline"><i class="fa fa-star" aria-hidden="true"></i> Top Headlines :</p>
-                        <!--made by vipul mirajkar thevipulm.appspot.com-->
-                        <h1>
-                            @foreach($news as $item)
-                                <a href="" class="typewrite" data-period="2000"
-                                   data-type='["{!! $item->name !!}"]'>
-                                    <span class="wrap"></span>
-                                </a>
-                            @endforeach
-                            {{--                            <a href="" class="typewrite" data-period="2000"--}}
-                            {{--                               data-type='[ "Contrary to popular belief, Lorem Ipsum is not simply random text.",--}}
-                            {{--                                "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",--}}
-                            {{--                                 "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."]'>--}}
-                            {{--                                <span class="wrap"></span>--}}
-                            {{--                            </a>--}}
-                        </h1>
-                        <span class="wrap"></span>
-                        </a>
+                <!-- /.item -->
+                <!-- Second slide -->
+                <div class="item skyblue" data-ride="carousel" data-interval="5000">
+                    <div class="carousel-caption">
+                        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"></div>
+                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                            <div class="slider-contant" data-animation="animated fadeInRight">
+                                <h3>If you Don’t Practice<br>You <span
+                                            class="color-yellow">Don’t Derserve</span><br>to win!</h3>
+                                <p>You can make a case for several potential winners of<br>the expanded European
+                                    Championships.</p>
+                                <button class="btn btn-primary btn-lg">Button</button>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <!-- /.item -->
+                <!-- Third slide -->
+                <div class="item darkerskyblue" data-ride="carousel" data-interval="5000">
+                    <div class="carousel-caption">
+                        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"></div>
+                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                            <div class="slider-contant" data-animation="animated fadeInRight">
+                                <h3>If you Don’t Practice<br>You <span
+                                            class="color-yellow">Don’t Derserve</span><br>to win!</h3>
+                                <p>You can make a case for several potential winners of<br>the expanded European
+                                    Championships.</p>
+                                <button class="btn btn-primary btn-lg">Button</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.item -->
+            </div>
+            <!-- /.carousel-inner -->
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <!-- /.carousel -->
+        <div class="news">
+            <div class="container">
+                <div class="heading-slider">
+                    <p class="headline"><i class="fa fa-star" aria-hidden="true"></i> Top Headlines :</p>
+                    <!--made by vipul mirajkar thevipulm.appspot.com-->
+                    <h1>
+                        @foreach($news as $item)
+                            <a href="" class="typewrite" data-period="2000"
+                               data-type='["{!! $item->name !!}"]'>
+                                <span class="wrap"></span>
+                            </a>
+                        @endforeach
+                    </h1>
+                    <span class="wrap"></span>
+                    </a>
                 </div>
             </div>
         </div>
+    </div>
     </section>
     <div class="matchs-info">
         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -155,39 +149,29 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-sm-4 col-xs-12">
-{{--                    <aside id="sidebar" class="left-bar">--}}
-{{--                        <div class="banner-sidebar">--}}
-{{--                            <img class="img-responsive" src="{{asset('images/img-05.jpg')}}" alt="#"/>--}}
-{{--                            <h3>Lorem Ipsum is simply dummy text..</h3>--}}
-{{--                        </div>--}}
-{{--                    </aside>--}}
+                    {{--                    <aside id="sidebar" class="left-bar">--}}
+                    {{--                        <div class="banner-sidebar">--}}
+                    {{--                            <img class="img-responsive" src="{{asset('images/img-05.jpg')}}" alt="#"/>--}}
+                    {{--                            <h3>Lorem Ipsum is simply dummy text..</h3>--}}
+                    {{--                        </div>--}}
+                    {{--                    </aside>--}}
                     <h4>Match Fixture</h4>
                     <aside id="sidebar" class="left-bar">
                         <div class="feature-matchs">
                             <div class="team-btw-match">
-                                <ul>
-                                    <li>
-                                        <img height="50px" width="50px" src="{{asset('images/club/2.png')}}" alt="">
-                                        <span>Merreikh</span>
-                                    </li>
-                                    <li class="vs"><span>vs</span></li>
-                                    <li>
-                                        <img height="50px" width="50px" src="{{asset('images/club/1.jpg')}}" alt="">
-                                        <span>Hilal </span>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <img src="{{asset('images/img-03_002.png')}}" alt="">
-                                        <span>Portugal</span>
-                                    </li>
-                                    <li class="vs"><span>vs</span></li>
-                                    <li>
-                                        <img src="images/img-04_003.png" alt="">
-                                        <span>Germany</span>
-                                    </li>
-                                </ul>
-
+                                @foreach($Matches as $Matches)
+                                    <ul>
+                                        <li>
+                                            <img height="50px" width="50px" src="{!! $Matches->image_one !!}" alt="">
+                                            <span>{!! $Matches->team_one !!}</span>
+                                        </li>
+                                        <li class="vs"><span>vs</span></li>
+                                        <li>
+                                            <img height="50px" width="50px" src="{!! $Matches->image_two !!}" alt="">
+                                            <span>{!! $Matches->team_two !!}</span>
+                                        </li>
+                                    </ul>
+                                @endforeach
                             </div>
                         </div>
                     </aside>
@@ -205,48 +189,17 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td><img height="30px" width="30px" src="{!! asset('images/club/2.png') !!}" alt="">Merreikh</td>
-                                    <td>10</td>
-                                    <td>12</td>
-                                    <td>20</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td><img height="30px" width="30px" src="{!! asset('images/club/1.jpg') !!}" alt="">Hilal </td>
-                                    <td>10</td>
-                                    <td>12</td>
-                                    <td>20</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td><img src="images/img-03_003.png" alt="">Norwich City</td>
-                                    <td>20</td>
-                                    <td>15</td>
-                                    <td>20</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td><img src="images/img-04_002.png" alt="">West Brom</td>
-                                    <td>60</td>
-                                    <td>10</td>
-                                    <td>60</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td><img src="images/img-05.png" alt="">sunderland</td>
-                                    <td>30</td>
-                                    <td>06</td>
-                                    <td>30</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td><img src="images/img-01_004.png" alt="">Liverpool</td>
-                                    <td>10</td>
-                                    <td>12</td>
-                                    <td>20</td>
-                                </tr>
+                                @foreach($Point as $Point)
+                                    <tr>
+                                        <td>{!! $Point->id !!}</td>
+                                        <td><img height="30px" width="30px" src="{!!$Point->logo !!}"
+                                                 alt="">{!! $Point->name !!}
+                                        </td>
+                                        <td>{!! $Point->point !!}</td>
+                                        <td>{!! $Point->win !!}</td>
+                                        <td>{!! $Point->lose !!}</td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -255,48 +208,30 @@
                         <div class="top-stroy-header">
                             <h2>Most Read <a href="#" class="fa fa-fa fa-angle-right"></a></h2>
                             <span class="date">{!! \Carbon\Carbon::now() !!}</span>
-{{--                            <h2>Other Headlines</h2>--}}
+                            {{--                            <h2>Other Headlines</h2>--}}
                         </div>
                         <ul class="other-stroies">
                             @foreach($most as $most)
-                            <li><a href="#">{!! Str::limit($most->title, 30) !!}</a></li>
-                                @endforeach
+                                <li><a href="/blog/{!! $most->id !!}">{!! Str::limit($most->title, 30) !!}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-8 col-sm-8 col-xs-12">
                     <div class="news-post-holder">
-                        @foreach($blog as $blog)
+                        @foreach($blogs as $blog)
                             <div class="news-post-widget">
                                 <img class="img-responsive" src="{!! $blog->image !!}" alt="">
                                 <div class="news-post-detail">
                                     <span class="date">{!! $blog->create_at !!}</span>
                                     <h2><a href="blog-detail.html">{!! Str::limit($blog->title, 45) !!}</a></h2>
                                     <p>{!! Str::limit($blog->contents, 200)!!}</p>
-                                    @if (Auth::check())
-                                        <div class="panel-footer">
-                                            <favorite
-                                                    :post={{ $blog->id }}
-                                                            :favorited={{ $blog->favorited() ? 'true' : 'false' }}
-                                            ></favorite>
-                                        </div>
-                                    @endif
                                 </div>
                             </div>
                         @endforeach
+                        {!! $blogs->links() !!}
                     </div>
-                    {{--                    <div class="news-post-holder">--}}
-                    {{--                        <div class="news-post-widget">--}}
-                    {{--                            <img class="img-responsive" src="images/img-03_003.jpg" alt="">--}}
-                    {{--                            <div class="news-post-detail">--}}
-                    {{--                                <span class="date">20 march 2016</span>--}}
-                    {{--                                <h2><a href="blog-detail.html">At vero eos et accusamus et iusto odio dignissimos--}}
-                    {{--                                        ducimus</a></h2>--}}
-                    {{--                                <p>Just hours after that his grandma had died, Angel Di Maria imagined how she might--}}
-                    {{--                                    react if he didn't play</p>--}}
-                    {{--                            </div>--}}
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
+
                 </div>
             </div>
         </div>
@@ -307,7 +242,7 @@
                 <div class="col-md-12">
                     <div class="full">
                         <div class="main-heading sytle-2">
-                            <h2>Video</h2>
+                            <h2>{!! $video->title !!}</h2>
                             <p>MultiMedia Library</p>
                         </div>
                     </div>
@@ -321,86 +256,88 @@
                 <div class="col-md-12">
                     <div class="full">
                         <div class="match_vedio">
-                            <img class="img-responsive" src="images/img-07.jpg" alt="#"/>
+                            <video class="img-responsive">
+                                <source src="{!! $video->video !!}">
+                            </video>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-{{--    <div class="team-holder theme-padding">--}}
-{{--        <div class="container">--}}
-{{--            <div class="main-heading-holder">--}}
-{{--                <div class="main-heading sytle-2">--}}
-{{--                    <h2>Meet Your Team</h2>--}}
-{{--                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium<br>doloremque--}}
-{{--                        laudantium, totam rem aperiam</p>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div id="team-slider">--}}
-{{--                <div class="container">--}}
-{{--                    <div class="col-md-3">--}}
-{{--                        <div class="team-column style-2">--}}
-{{--                            <img src="images/img-1-1.jpg" alt="">--}}
-{{--                            <div class="player-name">--}}
-{{--                                <div class="desination-2">Defender</div>--}}
-{{--                                <h5>Charles Wheeler</h5>--}}
-{{--                                <span class="player-number">12</span>--}}
-{{--                            </div>--}}
-{{--                            <div class="overlay">--}}
-{{--                                <div class="team-detail-hover position-center-x">--}}
-{{--                                    <p>Lacus vulputate torquent mollis venenatis quisque suspendisse fermentum--}}
-{{--                                        primis,</p>--}}
-{{--                                    <ul class="social-icons style-4 style-5">--}}
-{{--                                        <li><a class="facebook" href="#" tabindex="0"><i class="fa fa-facebook"></i></a>--}}
-{{--                                        </li>--}}
-{{--                                        <li><a class="twitter" href="#" tabindex="0"><i class="fa fa-twitter"></i></a>--}}
-{{--                                        </li>--}}
-{{--                                        <li><a class="youtube" href="#" tabindex="0"><i class="fa fa-youtube-play"></i></a>--}}
-{{--                                        </li>--}}
-{{--                                        <li><a class="pinterest" href="#" tabindex="0"><i class="fa fa-pinterest-p"></i></a>--}}
-{{--                                        </li>--}}
-{{--                                    </ul>--}}
-{{--                                    <a class="btn blue-btn" href=" /soccer/team-detail.html" tabindex="0">View--}}
-{{--                                        Detail</a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-md-3">--}}
-{{--                        <div class="team-column style-2">--}}
-{{--                            <img src="images/img-1-2.jpg" alt="">--}}
-{{--                            <div class="player-name">--}}
-{{--                                <div class="desination-2">Defender</div>--}}
-{{--                                <h5>Charles Wheeler</h5>--}}
-{{--                                <span class="player-number">12</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-md-3">--}}
-{{--                        <div class="team-column style-2">--}}
-{{--                            <img src="images/img-1-3.jpg" alt="">--}}
-{{--                            <div class="player-name">--}}
-{{--                                <div class="desination-2">Defender</div>--}}
-{{--                                <h5>Charles Wheeler</h5>--}}
-{{--                                <span class="player-number">12</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-md-3">--}}
-{{--                        <div class="team-column style-2">--}}
-{{--                            <img src="images/img-1-4.jpg" alt="">--}}
-{{--                            <div class="player-name">--}}
-{{--                                <div class="desination-2">Defender</div>--}}
-{{--                                <h5>Charles Wheeler</h5>--}}
-{{--                                <span class="player-number">12</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+    {{--    <div class="team-holder theme-padding">--}}
+    {{--        <div class="container">--}}
+    {{--            <div class="main-heading-holder">--}}
+    {{--                <div class="main-heading sytle-2">--}}
+    {{--                    <h2>Meet Your Team</h2>--}}
+    {{--                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium<br>doloremque--}}
+    {{--                        laudantium, totam rem aperiam</p>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--            <div id="team-slider">--}}
+    {{--                <div class="container">--}}
+    {{--                    <div class="col-md-3">--}}
+    {{--                        <div class="team-column style-2">--}}
+    {{--                            <img src="images/img-1-1.jpg" alt="">--}}
+    {{--                            <div class="player-name">--}}
+    {{--                                <div class="desination-2">Defender</div>--}}
+    {{--                                <h5>Charles Wheeler</h5>--}}
+    {{--                                <span class="player-number">12</span>--}}
+    {{--                            </div>--}}
+    {{--                            <div class="overlay">--}}
+    {{--                                <div class="team-detail-hover position-center-x">--}}
+    {{--                                    <p>Lacus vulputate torquent mollis venenatis quisque suspendisse fermentum--}}
+    {{--                                        primis,</p>--}}
+    {{--                                    <ul class="social-icons style-4 style-5">--}}
+    {{--                                        <li><a class="facebook" href="#" tabindex="0"><i class="fa fa-facebook"></i></a>--}}
+    {{--                                        </li>--}}
+    {{--                                        <li><a class="twitter" href="#" tabindex="0"><i class="fa fa-twitter"></i></a>--}}
+    {{--                                        </li>--}}
+    {{--                                        <li><a class="youtube" href="#" tabindex="0"><i class="fa fa-youtube-play"></i></a>--}}
+    {{--                                        </li>--}}
+    {{--                                        <li><a class="pinterest" href="#" tabindex="0"><i class="fa fa-pinterest-p"></i></a>--}}
+    {{--                                        </li>--}}
+    {{--                                    </ul>--}}
+    {{--                                    <a class="btn blue-btn" href=" /soccer/team-detail.html" tabindex="0">View--}}
+    {{--                                        Detail</a>--}}
+    {{--                                </div>--}}
+    {{--                            </div>--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                    <div class="col-md-3">--}}
+    {{--                        <div class="team-column style-2">--}}
+    {{--                            <img src="images/img-1-2.jpg" alt="">--}}
+    {{--                            <div class="player-name">--}}
+    {{--                                <div class="desination-2">Defender</div>--}}
+    {{--                                <h5>Charles Wheeler</h5>--}}
+    {{--                                <span class="player-number">12</span>--}}
+    {{--                            </div>--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                    <div class="col-md-3">--}}
+    {{--                        <div class="team-column style-2">--}}
+    {{--                            <img src="images/img-1-3.jpg" alt="">--}}
+    {{--                            <div class="player-name">--}}
+    {{--                                <div class="desination-2">Defender</div>--}}
+    {{--                                <h5>Charles Wheeler</h5>--}}
+    {{--                                <span class="player-number">12</span>--}}
+    {{--                            </div>--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                    <div class="col-md-3">--}}
+    {{--                        <div class="team-column style-2">--}}
+    {{--                            <img src="images/img-1-4.jpg" alt="">--}}
+    {{--                            <div class="player-name">--}}
+    {{--                                <div class="desination-2">Defender</div>--}}
+    {{--                                <h5>Charles Wheeler</h5>--}}
+    {{--                                <span class="player-number">12</span>--}}
+    {{--                            </div>--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
     <footer id="footer" class="footer">
         <div class="container">
             <div class="row">
@@ -410,7 +347,8 @@
                             <div class="footer-logo">
                                 <a href="#"><img src="images/footer-logo.png" alt="#"/></a>
                             </div>
-                            <p>Most of our events have hard and easy route choices as we are always keen to encourage to you.</p>
+                            <p>Most of our events have hard and easy route choices as we are always keen to encourage to
+                                you.</p>
                             <ul class="social-icons style-4 pull-left">
                                 <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
@@ -442,7 +380,8 @@
                                 <li><i class="fa fa-map-marker"></i> Sudan Khartoom.
                                 </li>
                                 <li><i class="fa fa-phone"></i> 2499433534</li>
-                                <li><i style="font-size:20px;top:5px;" class="fa fa-envelope"></i> sport65@sport65.com</li>
+                                <li><i style="font-size:20px;top:5px;" class="fa fa-envelope"></i> sport65@sport65.com
+                                </li>
                             </ul>
                         </div>
                     </div>

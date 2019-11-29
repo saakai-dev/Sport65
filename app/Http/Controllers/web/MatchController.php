@@ -31,7 +31,7 @@ class MatchController extends AppBaseController
      *
      * @return Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $matches = $this->matchRepository->all();
 

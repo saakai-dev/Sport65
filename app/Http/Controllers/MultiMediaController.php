@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateMultiMediaRequest;
 use App\Http\Requests\UpdateMultiMediaRequest;
+use App\Models\MultiMedia;
 use App\Repositories\MultiMediaRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Str;
 
 class MultiMediaController extends AppBaseController
 {
@@ -54,13 +56,25 @@ class MultiMediaController extends AppBaseController
      */
     public function store(CreateMultiMediaRequest $request)
     {
-        $input = $request->all();
+        try {
+            $input = $request->all();
+            if ($request->hasFile('video')) {
+                $file_name = $this->saveFile($request);
+                $profile = new MultiMedia();
+                $profile->fill($request->all());
+                $profile->video = $file_name;
+                $profile->save();
+                Flash::success('video saved successfully.');
+                return redirect(route('multiMedia.index'));
+            } else {
+                $profile = $this->multiMediaRepository->create($input);
+                Flash::success('video saved successfully.');
+                return redirect(route('multiMedia.index'));
+            }
 
-        $multiMedia = $this->multiMediaRepository->create($input);
-
-        Flash::success('Multi Media saved successfully.');
-
-        return redirect(route('multiMedia.index'));
+        } catch (\Exception $exception) {
+            return response()->json(["message" => $exception->getMessage(), 'status' => false]);
+        }
     }
 
     /**
@@ -113,19 +127,30 @@ class MultiMediaController extends AppBaseController
      */
     public function update($id, UpdateMultiMediaRequest $request)
     {
-        $multiMedia = $this->multiMediaRepository->find($id);
+        try {
+            $blog = $this->multiMediaRepository->find($id);
+            if (empty($blog)) {
+                Flash::error('Video not found');
 
-        if (empty($multiMedia)) {
-            Flash::error('Multi Media not found');
+                return redirect(route('multiMedia.index'));
+            }
+            if ($request->hasFile('video')) {
+                $file_name = $this->saveFile($request);
+                $blog->fill($request->all());
+                $blog->video = $file_name;
+                $blog->save();
+                Flash::success('Video updated successfully.');
+                return redirect(route('multiMedia.index'));
+            } else {
+                $this->multiMediaRepository->update($request->all(), $id);
+                Flash::success('Video updated successfully.');
+                return redirect(route('multiMedia.index'));
+            }
 
-            return redirect(route('multiMedia.index'));
+        } catch
+        (\Exception $exception) {
+            return response()->json(["message" => $exception->getMessage(), 'status' => false]);
         }
-
-        $multiMedia = $this->multiMediaRepository->update($request->all(), $id);
-
-        Flash::success('Multi Media updated successfully.');
-
-        return redirect(route('multiMedia.index'));
     }
 
     /**
@@ -133,9 +158,9 @@ class MultiMediaController extends AppBaseController
      *
      * @param int $id
      *
+     * @return Response
      * @throws \Exception
      *
-     * @return Response
      */
     public function destroy($id)
     {
@@ -153,4 +178,19 @@ class MultiMediaController extends AppBaseController
 
         return redirect(route('multiMedia.index'));
     }
+
+    public function saveFile($request)
+    {
+        $random = Str::random(10);
+        if ($request->hasfile('video')) {
+            $image = $request->file('video');
+            $name = 'image_' . $random . ".mp4";
+            $image->move(public_path() . '/video/', $name);
+            $name = url("video/$name");
+            return $name;
+        }
+        return false;
+    }
+
+
 }

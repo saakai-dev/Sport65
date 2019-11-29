@@ -6,7 +6,6 @@ use App\Http\Requests\CreatePointRequest;
 use App\Http\Requests\UpdatePointRequest;
 use App\Models\Point;
 use App\Repositories\PointRepository;
-use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;

@@ -18,10 +18,9 @@ class MultiMedia extends Model
     use SoftDeletes;
 
     public $table = 'multi_media';
-    
+
 
     protected $dates = ['deleted_at'];
-
 
 
     public $fillable = [
@@ -45,8 +44,9 @@ class MultiMedia extends Model
      * @var array
      */
     public static $rules = [
-        'video' => 'required'
+        'video' => 'required|mimes:mp4',
+
     ];
 
-    
+
 }

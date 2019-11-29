@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateTopTeamRequest;
 use App\Http\Requests\UpdateTopTeamRequest;
+use App\Models\TopTeam;
 use App\Repositories\TopTeamRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Str;
 
 class TopTeamController extends AppBaseController
 {
@@ -54,13 +56,25 @@ class TopTeamController extends AppBaseController
      */
     public function store(CreateTopTeamRequest $request)
     {
-        $input = $request->all();
+        try {
+            $input = $request->all();
+            if ($request->hasFile('logo')) {
+                $file_name = $this->saveFile($request);
+                $topTeam = new TopTeam();
+                $topTeam->fill($request->all());
+                $topTeam->logo = $file_name;
+                $topTeam->save();
+                Flash::success('top Team saved successfully.');
+                return redirect(route('topTeams.index'));
+            } else {
+                $this->topTeamRepository->create($input);
+                Flash::success('topTeam saved successfully.');
+                return redirect(route('topTeams.index'));
+            }
 
-        $topTeam = $this->topTeamRepository->create($input);
-
-        Flash::success('Top Team saved successfully.');
-
-        return redirect(route('topTeams.index'));
+        } catch (\Exception $exception) {
+            return response()->json(["message" => $exception->getMessage(), 'status' => false]);
+        }
     }
 
     /**
@@ -113,19 +127,30 @@ class TopTeamController extends AppBaseController
      */
     public function update($id, UpdateTopTeamRequest $request)
     {
-        $topTeam = $this->topTeamRepository->find($id);
+        try {
+            $topTeam = $this->topTeamRepository->find($id);
+            if (empty($topTeam)) {
+                Flash::error('Top Team not found');
 
-        if (empty($topTeam)) {
-            Flash::error('Top Team not found');
+                return redirect(route('topTeams.index'));
+            }
+            if ($request->hasFile('logo')) {
+                $file_name = $this->saveFile($request);
+                $topTeam->fill($request->all());
+                $topTeam->logo = $file_name;
+                $topTeam->save();
+                Flash::success('Top Team updated successfully.');
+                return redirect(route('topTeams.index'));
+            } else {
+                $this->topTeamRepository->update($request->all(), $id);
+                Flash::success('Top Team updated successfully.');
+                return redirect(route('topTeams.index'));
+            }
 
-            return redirect(route('topTeams.index'));
+        } catch
+        (\Exception $exception) {
+            return response()->json(["message" => $exception->getMessage(), 'status' => false]);
         }
-
-        $topTeam = $this->topTeamRepository->update($request->all(), $id);
-
-        Flash::success('Top Team updated successfully.');
-
-        return redirect(route('topTeams.index'));
     }
 
     /**
@@ -133,9 +158,9 @@ class TopTeamController extends AppBaseController
      *
      * @param int $id
      *
+     * @return Response
      * @throws \Exception
      *
-     * @return Response
      */
     public function destroy($id)
     {
@@ -153,4 +178,18 @@ class TopTeamController extends AppBaseController
 
         return redirect(route('topTeams.index'));
     }
+
+    public function saveFile($request)
+    {
+        $random = Str::random(10);
+        if ($request->hasfile('logo')) {
+            $image = $request->file('logo');
+            $name = 'image_' . $random . ".png";
+            $image->move(public_path() . '/topTeam/', $name);
+            $name = url("topTeam/$name");
+            return $name;
+        }
+        return false;
+    }
+
 }

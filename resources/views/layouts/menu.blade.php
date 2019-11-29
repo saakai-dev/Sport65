@@ -11,10 +11,6 @@
     <a href="{!! route('matches.index') !!}"><i class="fa fa-edit"></i><span>Matches</span></a>
 </li>
 
-<li class="{{ Request::is('matchFutures*') ? 'active' : '' }}">
-    <a href="{!! route('matchFutures.index') !!}"><i class="fa fa-edit"></i><span>Match Futures</span></a>
-</li>
-
 <li class="{{ Request::is('siteReviews*') ? 'active' : '' }}">
     <a href="{!! route('siteReviews.index') !!}"><i class="fa fa-edit"></i><span>Site Reviews</span></a>
 </li>

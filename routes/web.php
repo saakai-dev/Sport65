@@ -29,8 +29,6 @@ Route::resource('news66', 'web\NewsController');
 
 Route::resource('matches', 'web\MatchController');
 
-Route::resource('matchFutures', 'web\MatchFutureController');
-
 Route::resource('siteReviews', 'web\SiteReviewController');
 
 Route::resource('points', 'PointController');
