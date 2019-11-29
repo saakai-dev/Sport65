@@ -36,6 +36,7 @@ Route::resource('points', 'PointController');
 Route::resource('multiMedia', 'MultiMediaController');
 
 Route::resource('topTeams', 'TopTeamController');
+Route::resource('Teams', 'web/TopTeamSiteController');
 
 Route::get('p_blog', 'BlogSiteController@index')->name('p_blog');
 Route::get('p_blog/{id}', 'BlogSiteController@show')->name('p_blog.show');

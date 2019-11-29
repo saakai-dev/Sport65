@@ -256,9 +256,11 @@
                 <div class="col-md-12">
                     <div class="full">
                         <div class="match_vedio">
-                            <video class="img-responsive">
-                                <source src="{!! $video->video !!}">
+                            <video class="img-responsive" controls>
+                                <source src="{!! $video->video !!}" type="video/mp4">
+                                Your browser does not support the video tag.
                             </video>
+
                         </div>
                     </div>
                 </div>
