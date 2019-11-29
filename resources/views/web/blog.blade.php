@@ -3,19 +3,19 @@
 @section('content')
 
 
-        <div class="inner-page-banner">
-            <div class="container">
-            </div>
+    <div class="inner-page-banner">
+        <div class="container">
         </div>
-        <div class="inner-information-text">
-            <div class="container">
-                <h3>Blog</h3>
-                <ul class="breadcrumb">
-                    <li><a href="/">Home</a></li>
-                    <li class="active">Blog</li>
-                </ul>
-            </div>
+    </div>
+    <div class="inner-information-text">
+        <div class="container">
+            <h3>Blog</h3>
+            <ul class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li class="active">Blog</li>
+            </ul>
         </div>
+    </div>
     </section>
     <section id="contant" class="contant main-heading team">
         <div class="row">
@@ -46,19 +46,6 @@
                                             <a class="btn" href="/p_blog/{!! $blog->id !!}">Read More</a>
                                         </div>
 
-
-                                        {{--                                            {!! Form::open(['url' => 'addFavorites', 'id' => 'ajax']) !!}--}}
-
-                                        {{--                                            <a href="#" id="favorite" class="bookmark">--}}
-                                        {{--                                                <span class="fa fa-hard-of-hearing"></span>--}}
-                                        {{--                                            </a>--}}
-                                        {{--                                            <input type="hidden" name="user_id" id="user_id" value="{{Auth::user()->id}}">--}}
-                                        {{--                                            <input type="hidden" name="blog_id" id="blog_id"--}}
-                                        {{--                                                   value="{{$blog['id']}}">--}}
-                                        {{--                                            <input type="button" id="test" value="Ok">--}}
-
-                                        {{--                                            {!! Form::close() !!}--}}
-                                        {{--                                        @endif--}}
                                     </div>
                                 </div>
                             </div>

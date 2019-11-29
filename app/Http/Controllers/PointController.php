@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePointRequest;
 use App\Http\Requests\UpdatePointRequest;
+use App\Models\Point;
 use App\Repositories\PointRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Str;
 
 class PointController extends AppBaseController
 {
@@ -54,13 +56,25 @@ class PointController extends AppBaseController
      */
     public function store(CreatePointRequest $request)
     {
-        $input = $request->all();
+        try {
+            $input = $request->all();
+            if ($request->hasFile('logo')) {
+                $file_name = $this->saveFile($request);
+                $profile = new Point();
+                $profile->fill($request->all());
+                $profile->logo = $file_name;
+                $profile->save();
+                Flash::success('Point saved successfully.');
+                return redirect(route('points.index'));
+            } else {
+                $profile = $this->pointRepository->create($input);
+                Flash::success('Point saved successfully.');
+                return redirect(route('points.index'));
+            }
 
-        $point = $this->pointRepository->create($input);
-
-        Flash::success('Point saved successfully.');
-
-        return redirect(route('points.index'));
+        } catch (\Exception $exception) {
+            return response()->json(["message" => $exception->getMessage(), 'status' => false]);
+        }
     }
 
     /**
@@ -113,19 +127,33 @@ class PointController extends AppBaseController
      */
     public function update($id, UpdatePointRequest $request)
     {
-        $point = $this->pointRepository->find($id);
 
-        if (empty($point)) {
-            Flash::error('Point not found');
+        try {
+            $blog = $this->pointRepository->find($id);
+            if (empty($blog)) {
+                Flash::error('Point not found');
 
-            return redirect(route('points.index'));
+                return redirect(route('points.index'));
+            }
+            if ($request->hasFile('logo')) {
+                $file_name = $this->saveFile($request);
+                $blog->fill($request->all());
+                $blog->logo = $file_name;
+                $blog->save();
+                Flash::success('Point updated successfully.');
+                return redirect(route('points.index'));
+            } else {
+                $this->pointRepository->update($request->all(), $id);
+                Flash::success('Point updated successfully.');
+                return redirect(route('points.index'));
+            }
+
+        } catch
+        (\Exception $exception) {
+            return response()->json(["message" => $exception->getMessage(), 'status' => false]);
         }
 
-        $point = $this->pointRepository->update($request->all(), $id);
 
-        Flash::success('Point updated successfully.');
-
-        return redirect(route('points.index'));
     }
 
     /**
@@ -133,9 +161,9 @@ class PointController extends AppBaseController
      *
      * @param int $id
      *
+     * @return Response
      * @throws \Exception
      *
-     * @return Response
      */
     public function destroy($id)
     {
@@ -153,4 +181,18 @@ class PointController extends AppBaseController
 
         return redirect(route('points.index'));
     }
+
+    public function saveFile($request)
+    {
+        $random = Str::random(10);
+        if ($request->hasfile('logo')) {
+            $image = $request->file('logo');
+            $name = 'image_' . $random . ".png";
+            $image->move(public_path() . '/point/', $name);
+            $name = url("point/$name");
+            return $name;
+        }
+        return false;
+    }
+
 }

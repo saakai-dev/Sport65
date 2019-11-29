@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
+use App\User;
+use Auth;
 use Illuminate\Http\Request;
+use Ramsey\Uuid\Uuid;
 
 class UsersController extends Controller
 {
@@ -90,6 +93,8 @@ class UsersController extends Controller
      */
     public function myFavorites()
     {
-        return view('web.favorites', []);
+         $blog = Auth::user()->favorites()->get();
+        return view('web.favorites', ['blog' => $blog]);
+
     }
 }
