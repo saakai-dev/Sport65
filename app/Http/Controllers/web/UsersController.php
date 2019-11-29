@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Match;
+use App\Models\Point;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -93,8 +95,14 @@ class UsersController extends Controller
      */
     public function myFavorites()
     {
+        $Matches = Match::orderBy('created_at', 'ASC')->get();
          $blog = Auth::user()->favorites()->get();
-        return view('web.favorites', ['blog' => $blog]);
+        $Point = Point::orderBy('created_at', 'ASC')->paginate(7);
+
+        return view('web.favorites', [
+            'blog' => $blog,
+            'Matches'=>$Matches,
+            'Point'=>$Point]);
 
     }
 }

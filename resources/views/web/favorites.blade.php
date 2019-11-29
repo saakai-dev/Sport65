@@ -67,64 +67,23 @@
                     <aside id="sidebar" class="left-bar">
                         <div class="feature-matchs">
                             <div class="team-btw-match">
-                                <ul>
-                                    <li>
-                                        <img src="images/img-01_002.png" alt="">
-                                        <span>Portugal</span>
-                                    </li>
-                                    <li class="vs"><span>vs</span></li>
-                                    <li>
-                                        <img src="images/img-02.png" alt="">
-                                        <span>Germany</span>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <img src="images/img-03_002.png" alt="">
-                                        <span>Portugal</span>
-                                    </li>
-                                    <li class="vs"><span>vs</span></li>
-                                    <li>
-                                        <img src="images/img-04_003.png" alt="">
-                                        <span>Germany</span>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <img src="images/img-05_002.png" alt="">
-                                        <span>Portugal</span>
-                                    </li>
-                                    <li class="vs"><span>vs</span></li>
-                                    <li>
-                                        <img src="images/img-06.png" alt="">
-                                        <span>Germany</span>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <img src="images/img-07_002.png" alt="">
-                                        <span>Portugal</span>
-                                    </li>
-                                    <li class="vs"><span>vs</span></li>
-                                    <li>
-                                        <img src="images/img-08.png" alt="">
-                                        <span>Germany</span>
-                                    </li>
-                                </ul>
+                                @foreach($Matches as $Matches)
+                                    <ul>
+                                        <li>
+                                            <img height="50px" width="50px" src="{!! $Matches->image_one !!}" alt="">
+                                            <span>{!! $Matches->team_one !!}</span>
+                                        </li>
+                                        <li class="vs"><span>vs</span></li>
+                                        <li>
+                                            <img height="50px" width="50px" src="{!! $Matches->image_two !!}" alt="">
+                                            <span>{!! $Matches->team_two !!}</span>
+                                        </li>
+                                    </ul>
+                                @endforeach
                             </div>
                         </div>
                     </aside>
-                    <aside id="sidebar" class="left-bar">
-                        <div class="banner-sidebar">
-                            <img class="img-responsive" src="images/match-banner1.jpg" alt="#">
-                            <h3>Argentina vs Chile|Goals of the match | COPA </h3>
-                        </div>
-                    </aside>
-                    <aside id="sidebar" class="right-bar">
-                        <div class="banner">
-                            <img class="img-responsive" src="images/adds-3.jpg" alt="#">
-                        </div>
-                    </aside>
+                    <h4>Points Table</h4>
                     <aside id="sidebar" class="left-bar">
                         <div class="feature-matchs">
                             <table class="table table-bordered table-hover">
@@ -138,41 +97,17 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td><img src="images/img-01_004.png" alt="">Liverpool</td>
-                                    <td>10</td>
-                                    <td>12</td>
-                                    <td>20</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td><img src="images/img-02_002.png" alt="">Chelsea</td>
-                                    <td>10</td>
-                                    <td>12</td>
-                                    <td>20</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td><img src="images/img-03_003.png" alt="">Norwich City</td>
-                                    <td>20</td>
-                                    <td>15</td>
-                                    <td>20</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td><img src="images/img-04_002.png" alt="">West Brom</td>
-                                    <td>60</td>
-                                    <td>10</td>
-                                    <td>60</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td><img src="images/img-05.png" alt="">sunderland</td>
-                                    <td>30</td>
-                                    <td>06</td>
-                                    <td>30</td>
-                                </tr>
+                                @foreach($Point as $Point)
+                                    <tr>
+                                        <td>{!! $Point->id !!}</td>
+                                        <td><img height="30px" width="30px" src="{!!$Point->logo !!}"
+                                                 alt="">{!! $Point->name !!}
+                                        </td>
+                                        <td>{!! $Point->point !!}</td>
+                                        <td>{!! $Point->win !!}</td>
+                                        <td>{!! $Point->lose !!}</td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -181,69 +116,5 @@
             </div>
         </div>
     </section>
-    <footer id="footer" class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="full">
-                        <div class="footer-widget">
-                            <div class="footer-logo">
-                                <a href="#"><img src="images/footer-logo.png" alt="#"/></a>
-                            </div>
-                            <p>Most of our events have hard and easy route choices as we are always keen to encourage
-                                new riders.</p>
-                            <ul class="social-icons style-4 pull-left">
-                                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
-                                <li><a class="pinterest" href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="full">
-                        <div class="footer-widget">
-                            <h3>Menu</h3>
-                            <ul class="footer-menu">
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="team.html">Our Team</a></li>
-                                <li><a href="news.html">Latest News</a></li>
-                                <li><a href="matche.html">Recent Matchs</a></li>
-                                <li><a href="blog.html">Our Blog</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="full">
-                        <div class="footer-widget">
-                            <h3>Contact us</h3>
-                            <ul class="address-list">
-                                <li><i class="fa fa-map-marker"></i> Lorem Ipsum is simply dummy text of the printing..
-                                </li>
-                                <li><i class="fa fa-phone"></i> 123 456 7890</li>
-                                <li><i style="font-size:20px;top:5px;" class="fa fa-envelope"></i> demo@gmail.com</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="full">
-                        <div class="contact-footer">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d120615.72236587871!2d73.07890527988283!3d19.140910987164396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1527759905404"
-                                    width="600" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="container">
-                <p>Copyright © 2018 GameInfo.All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
     <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
 @endsection

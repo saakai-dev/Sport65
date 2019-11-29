@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Blog;
+use App\Models\Match;
+use App\Models\Point;
 use App\Repositories\BlogRepository;
 use Auth;
 use Illuminate\Http\Request;
@@ -30,9 +32,12 @@ class BlogSiteController extends AppBaseController
     public function index(Request $request)
     {
         $blog = $this->blogRepository->paginate(10);
+        $Point = Point::orderBy('created_at', 'ASC')->paginate(7);
+        $Matches = Match::orderBy('created_at', 'ASC')->get();
 
-        return view('web.blog')
-            ->with('blog', $blog);
+        return view('web.blog',['blog'=>$blog,
+            'Matches'=>$Matches,
+            'Point'=>$Point]);
     }
 
 
