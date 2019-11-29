@@ -6,6 +6,7 @@ use App\Models\Ligue;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Str;
 
 class LigueController extends Controller
 {
@@ -50,7 +51,7 @@ class LigueController extends Controller
                 Flash::success('Ligue saved successfully.');
                 return redirect(route('ligues.index'));
             } else {
-                $this->matchRepository->create($input);
+                Ligue::create($input);
                 Flash::success('Ligue saved successfully.');
                 return redirect(route('ligues.index'));
             }
@@ -66,9 +67,17 @@ class LigueController extends Controller
      * @param Ligue $ligue
      * @return Response
      */
-    public function show(Ligue $ligue)
+    public function show($id)
     {
-        //
+        $ligues = Ligue::find($id);
+
+        if (empty($ligues)) {
+            Flash::error('Ligue not found');
+
+            return redirect(route('ligues.index'));
+        }
+
+        return view('ligue.show')->with('ligues', $ligues);
     }
 
     /**
@@ -77,9 +86,17 @@ class LigueController extends Controller
      * @param Ligue $ligue
      * @return Response
      */
-    public function edit(Ligue $ligue)
+    public function edit($id)
     {
-        //
+        $ligues = Ligue::find($id);
+
+        if (empty($ligues)) {
+            Flash::error('Ligue not found');
+
+            return redirect(route('ligues.index'));
+        }
+
+        return view('ligue.edit')->with('ligues', $ligues);
     }
 
     /**
@@ -89,19 +106,69 @@ class LigueController extends Controller
      * @param Ligue $ligue
      * @return Response
      */
-    public function update(Request $request, Ligue $ligue)
+    public function update(Request $request, $id)
     {
-        //
+        try {
+            $ligues = Ligue::find($id);
+            if (empty($ligues)) {
+                Flash::error('Ligue not found');
+
+                return redirect(route('ligues.index'));
+            }
+            if ($request->hasFile('logo')) {
+                $file_name = $this->saveLogo($request);
+                $ligues->fill($request->all());
+                $ligues->logo = $file_name;
+                $ligues->save();
+                Flash::success('Ligue updated successfully.');
+                return redirect(route('ligues.index'));
+            } else {
+                Ligue::update($request->all(), $id);
+                Flash::success('Ligue updated successfully.');
+                return redirect(route('ligues.index'));
+            }
+
+        } catch
+        (\Exception $exception) {
+            return response()->json(["message" => $exception->getMessage(), 'status' => false]);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Ligue $ligue
+     * @param $id
      * @return Response
+     * @throws Exception
      */
-    public function destroy(Ligue $ligue)
+    public function destroy($id)
     {
-        //
+        $ligues = Ligue::find($id);
+
+        if (empty($ligues)) {
+            Flash::error('Ligue not found');
+
+            return redirect(route('ligues.index'));
+        }
+
+        Ligue::delete($id);
+
+        Flash::success('Ligue deleted successfully.');
+
+        return redirect(route('ligues.index'));
     }
+
+    public function saveLogo($request)
+    {
+        $random = Str::random(10);
+        if ($request->hasfile('video')) {
+            $image = $request->file('video');
+            $name = 'image_' . $random . ".mp4";
+            $image->move(public_path() . '/video/', $name);
+            $name = url("video/$name");
+            return $name;
+        }
+        return false;
+    }
+
 }

@@ -128,17 +128,17 @@ class MultiMediaController extends AppBaseController
     public function update($id, UpdateMultiMediaRequest $request)
     {
         try {
-            $blog = $this->multiMediaRepository->find($id);
-            if (empty($blog)) {
+            $multiMedia = $this->multiMediaRepository->find($id);
+            if (empty($multiMedia)) {
                 Flash::error('Video not found');
 
                 return redirect(route('multiMedia.index'));
             }
             if ($request->hasFile('video')) {
                 $file_name = $this->saveFile($request);
-                $blog->fill($request->all());
-                $blog->video = $file_name;
-                $blog->save();
+                $multiMedia->fill($request->all());
+                $multiMedia->video = $file_name;
+                $multiMedia->save();
                 Flash::success('Video updated successfully.');
                 return redirect(route('multiMedia.index'));
             } else {
