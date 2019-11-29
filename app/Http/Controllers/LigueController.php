@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ligue;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class LigueController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -22,29 +24,47 @@ class LigueController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
-        //
+        return view('ligue.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $input = $request->all();
+            if ($request->hasFile('logo')) {
+                $logo = $this->saveLogo($request);
+                $ligue = new Ligue();
+                $ligue->fill($request->all());
+                $ligue->logo = $logo;
+                $ligue->save();
+                Flash::success('Ligue saved successfully.');
+                return redirect(route('ligues.index'));
+            } else {
+                $this->matchRepository->create($input);
+                Flash::success('Ligue saved successfully.');
+                return redirect(route('ligues.index'));
+            }
+
+        } catch (Exception $exception) {
+            return dd($exception);
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Ligue $ligue
-     * @return \Illuminate\Http\Response
+     * @param Ligue $ligue
+     * @return Response
      */
     public function show(Ligue $ligue)
     {
@@ -54,8 +74,8 @@ class LigueController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Ligue $ligue
-     * @return \Illuminate\Http\Response
+     * @param Ligue $ligue
+     * @return Response
      */
     public function edit(Ligue $ligue)
     {
@@ -65,9 +85,9 @@ class LigueController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Ligue $ligue
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Ligue $ligue
+     * @return Response
      */
     public function update(Request $request, Ligue $ligue)
     {
@@ -77,8 +97,8 @@ class LigueController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Ligue $ligue
-     * @return \Illuminate\Http\Response
+     * @param Ligue $ligue
+     * @return Response
      */
     public function destroy(Ligue $ligue)
     {
