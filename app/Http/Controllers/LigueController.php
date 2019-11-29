@@ -6,6 +6,7 @@ use App\Models\Ligue;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Laracasts\Flash\Flash;
 use Str;
 
 class LigueController extends Controller
@@ -18,7 +19,7 @@ class LigueController extends Controller
     public function index()
     {
         $ligues = Ligue::all();
-        return view('matches.index')
+        return view('ligue.index')
             ->with('ligues', $ligues);
     }
 
@@ -123,8 +124,9 @@ class LigueController extends Controller
                 Flash::success('Ligue updated successfully.');
                 return redirect(route('ligues.index'));
             } else {
-                Ligue::update($request->all(), $id);
-                Flash::success('Ligue updated successfully.');
+                $ligues->fill($request->all());
+                $ligues->save();
+                Flash::success('Ligue updated successfully.title');
                 return redirect(route('ligues.index'));
             }
 
@@ -151,7 +153,7 @@ class LigueController extends Controller
             return redirect(route('ligues.index'));
         }
 
-        Ligue::delete($id);
+        Ligue::destroy($id);
 
         Flash::success('Ligue deleted successfully.');
 
@@ -161,11 +163,11 @@ class LigueController extends Controller
     public function saveLogo($request)
     {
         $random = Str::random(10);
-        if ($request->hasfile('video')) {
-            $image = $request->file('video');
-            $name = 'image_' . $random . ".mp4";
-            $image->move(public_path() . '/video/', $name);
-            $name = url("video/$name");
+        if ($request->hasfile('logo')) {
+            $image = $request->file('logo');
+            $name = 'image_' . $random . ".png";
+            $image->move(public_path() . '/ligue/', $name);
+            $name = url("ligue/$name");
             return $name;
         }
         return false;
