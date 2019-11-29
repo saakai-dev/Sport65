@@ -204,7 +204,8 @@
                             </table>
                         </div>
                     </aside>
-                    <div class="content-widget top-story" style="background: url(images/top-story-bg.jpg);">
+                    <div class="content-widget top-story">
+{{--                    <div class="content-widget top-story" style="background: url(images/bg1.png);">--}}
                         <div class="top-stroy-header">
                             <h2>Most Read <a href="#" class="fa fa-fa fa-angle-right"></a></h2>
                             <span class="date">{!! \Carbon\Carbon::now() !!}</span>
@@ -221,7 +222,7 @@
                     <div class="news-post-holder">
                         @foreach($blogs as $blog)
                             <div class="news-post-widget">
-                                <img class="img-responsive" src="{!! $blog->image !!}" alt="">
+                                <img class="img-responsive" height="430px" width="650px" src="{!! $blog->image !!}" alt="">
                                 <div class="news-post-detail">
                                     <span class="date">{!! $blog->create_at !!}</span>
                                     <h2><a href="blog-detail.html">{!! Str::limit($blog->title, 45) !!}</a></h2>

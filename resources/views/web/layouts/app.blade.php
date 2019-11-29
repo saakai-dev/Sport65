@@ -17,9 +17,9 @@
 <!-- Site CSS -->
 <link rel="stylesheet" href="{{asset('style.css')}}">
 <!-- Colors CSS -->
-<link rel="stylesheet" href="{{asset('css/colors.css')}}">
-<!-- ALL VERSION CSS -->
-<link rel="stylesheet" href="{{asset('css/versions.css')}}">
+{{--<link rel="stylesheet" href="{{asset('css/colors.css')}}">--}}
+{{--<!-- ALL VERSION CSS -->--}}
+{{--<link rel="stylesheet" href="{{asset('css/versions.css')}}">--}}
 <!-- Responsive CSS -->
 <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
 <!-- Custom CSS -->
@@ -30,8 +30,9 @@
 <!-- end font family -->
 <link rel="stylesheet" href="{{asset('css/3dslider.css')}}"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<script src="{!! asset('js/3dslider.js')!!}"></script>
 
 @yield('css')
 </head>
@@ -132,7 +133,7 @@
                     <div class="full">
                         <div class="footer-widget">
                             <div class="footer-logo">
-                                <a href="#"><img src="images/footer-logo.png" alt="#"/></a>
+                                <a href="#"><img src="{!! asset('images/footer-logo.png')!!}" alt="#"/></a>
                             </div>
                             <p>Most of our events have hard and easy route choices as we are always keen to encourage to
                                 you.</p>
@@ -151,10 +152,8 @@
                             <h3>Menu</h3>
                             <ul class="footer-menu">
                                 <li><a href="about.html">About Us</a></li>
-                                <li><a href="news.html">Latest News</a></li>
                                 <li><a href="matche.html">Recent Matchs</a></li>
-                                <li><a href="blog.html">Our Blog</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
+                                <li><a href="/blog">Our Blog</a></li>
                             </ul>
                         </div>
                     </div>
@@ -189,14 +188,14 @@
         </div>
     </footer>
     <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+
+
+    <!-- jQuery 3.1.1 -->
+{{--    <script src="{!! asset('js/app.js') !!}"></script>--}}
     <!-- ALL JS FILES -->
     <script src="{{asset('js/all.js')}}"></script>
     <!-- ALL PLUGINS -->
     <script src="{{asset('js/custom.js')}}"></script>
-    <!-- jQuery 3.1.1 -->
-    {{--<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>--}}
-    <script src="{!! asset('js/app.js') !!}"></script>
-    <script src="{{asset('js/3dslider.js')}}"></script>
 
     {{--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--}}
     {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>--}}
@@ -212,5 +211,5 @@
     @yield('scripts')
     </body>
 
-
+</section>
 </html>

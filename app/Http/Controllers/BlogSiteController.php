@@ -10,7 +10,6 @@ use App\Models\Point;
 use App\Repositories\BlogRepository;
 use Auth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class BlogSiteController extends AppBaseController
 {
