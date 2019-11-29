@@ -2,10 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateTopTeamsTable extends Migration
+class CreateLiguesTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -13,14 +13,11 @@ class CreateTopTeamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('top_teams', function (Blueprint $table) {
-            $table->bigincrements('id');
-            $table->string('name');
+        Schema::create('ligues', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('title');
             $table->string('logo');
-            $table->text('description')->nullable();
-            $table->unsignedBigInteger('ligue_id')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -31,6 +28,6 @@ class CreateTopTeamsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('top_teams');
+        Schema::dropIfExists('ligues');
     }
 }
