@@ -99,6 +99,7 @@
                                                 <li><a href="about.html">About</a></li>
                                                 <li><a href="team.html">Team</a></li>
                                                 <li><a href="{!! asset('/p_blog') !!}">Blog</a></li>
+                                                <li><a href="{!! asset('/my_favorites') !!}">Favorites</a></li>
                                             </ul>
                                         </div>
                                         <!-- /.nav-collapse -->

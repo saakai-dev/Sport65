@@ -46,6 +46,3 @@ Route::post('favorite/{blog}', 'web\BlogController@favoritePost');
 Route::post('unfavorite/{blog}', 'web\BlogController@unFavoritePost');
 
 Route::get('my_favorites', 'web\UsersController@myFavorites')->middleware('auth');
-Route::get('testF/{id}', function ($id) {
-    return Auth::user()->favorites()->where('blog_id', $id)->first();
-});

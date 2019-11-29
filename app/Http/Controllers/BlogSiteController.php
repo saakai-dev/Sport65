@@ -38,6 +38,7 @@ class BlogSiteController extends AppBaseController
 
     public function show($id)
     {
+        $check = Auth::user()->favorites()->where('blog_id', $id)->first();
         $blog = $this->blogRepository->find($id);
 
         if (empty($blog)) {
@@ -45,8 +46,12 @@ class BlogSiteController extends AppBaseController
 
             return redirect(route('p_blog'));
         }
+        if (empty($check)) {
+            $check = 0;
+            return view('web.blogContent', ['blog' => $blog, 'check' => $check]);
+        }
+        return view('web.blogContent', ['blog' => $blog, 'check' => 1]);
 
-        return view('web.blogContent')->with('blog', $blog);
     }
 
 
