@@ -155,6 +155,7 @@
                     {{--                            <h3>Lorem Ipsum is simply dummy text..</h3>--}}
                     {{--                        </div>--}}
                     {{--                    </aside>--}}
+
                     <h4>Match Fixture</h4>
                     <aside id="sidebar" class="left-bar">
                         <div class="feature-matchs">

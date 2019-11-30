@@ -176,7 +176,7 @@
                     <div class="full">
                         {!! Form::open(['route' => 'gust.reviews', null => true]) !!}
                         <div class="form-group col-sm-12 col-lg-12">
-                            <label> Whata Aboute site?</label>
+                            <label> What do you think About site?</label>
                             <br>
                             {{--                                <select name="answer" class="form-control selected">--}}
                             {{--                                    <option value="V.Good">V.Good</option>--}}

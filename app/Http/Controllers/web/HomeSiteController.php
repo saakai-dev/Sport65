@@ -8,13 +8,19 @@ use App\Models\Match;
 use App\Models\MultiMedia;
 use App\Models\News;
 use App\Models\Point;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeSiteController extends Controller
 {
     public function index()
     {
-        $match_today = Match::orderByDesc('match_date')->get()->first();
+        $toDay = Carbon::today();
+        $toMorrow = Carbon::tomorrow();
+//        $match_today = Match::orderByDesc('match_date')->get()->first();
+        $match_today = Match::where('match_date', $toDay)
+            ->orWhere('match_date', $toMorrow)
+            ->get()->first();
         $news = News::paginate(5);
         $blogs = Blog::paginate(5);
         $Matches = Match::orderBy('created_at', 'ASC')->get();

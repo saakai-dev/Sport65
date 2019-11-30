@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateSiteReviewRequest;
 use App\Models\VoteReview;
 use App\Repositories\SiteReviewRepository;
 use App\Http\Controllers\AppBaseController;
+use DB;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -30,10 +31,25 @@ class SiteReviewController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $siteReviews = $this->siteReviewRepository->all();
+//        $siteReviews = $this->siteReviewRepository->all();
+        $votes = VoteReview::count();
+        $VGoodCount = DB::table('vote_reviews')->where('vote', 1)->count();
+        $GoodCount = DB::table('vote_reviews')->where('vote', 2)->count();
+        $BadCount = DB::table('vote_reviews')->where('vote', 3)->count();
+        $votesVGood = $VGoodCount / $votes * 100;
+        $votesGood = $GoodCount / $votes * 100;
+        $votesBad = $BadCount / $votes * 100;
+        $votesData = ['cvG' => $VGoodCount, 'cG' => $GoodCount, 'cB' => $BadCount];
+        return view('site_reviews.index', [
+            'votes' => $votes,
+            'votesVGood' => $votesVGood,
+            'votesGood' => $votesGood,
+            'votesBad' => $votesBad,
+            'votesData' => $votesData
+        ]);
 
-        return view('site_reviews.index')
-            ->with('siteReviews', $siteReviews);
+//        return view('site_reviews.index')
+//            ->with('siteReviews', $siteReviews);
     }
 
     /**
@@ -176,6 +192,20 @@ class SiteReviewController extends AppBaseController
 
     public function getVote()
     {
-        return $votes = VoteReview::all();
+        $votes = VoteReview::count();
+        $VGoodCount = DB::table('vote_reviews')->where('vote', 1)->count();
+        $GoodCount = DB::table('vote_reviews')->where('vote', 2)->count();
+        $BadCount = DB::table('vote_reviews')->where('vote', 3)->count();
+        $votesVGood = $VGoodCount / $votes * 100;
+        $votesGood = $GoodCount / $votes * 100;
+        $votesBad = $BadCount / $votes * 100;
+        $votesData = ['cvG' => $VGoodCount, 'cG' => $GoodCount, 'cB' => $BadCount];
+        return view('site_reviews.vote', [
+            'votes' => $votes,
+            'votesVGood' => $votesVGood,
+            'votesGood' => $votesGood,
+            'votesBad' => $votesBad,
+            'votesData' => $votesData
+        ]);
     }
 }
