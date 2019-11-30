@@ -174,6 +174,12 @@
                 </div>
                 <div class="col-md-3">
                     <div class="full">
+                        {!! Form::open(['route' => 'gust.reviews', null => true]) !!}
+                        <div class="form-group col-sm-12 col-lg-12">
+                            <label>    {!! Form::radio('answe', ''1,  null, ['id' => '', '']) !!}    </label>
+                        </div>
+                        {!! Form::close() !!}
+
                         {{--                        <div class="contact-footer">--}}
                         {{--                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d120615.72236587871!2d73.07890527988283!3d19.140910987164396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1527759905404" width="600" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>--}}
                         {{--                        </div>--}}

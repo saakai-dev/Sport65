@@ -30,6 +30,7 @@ Route::resource('news66', 'web\NewsController');
 Route::resource('matches', 'web\MatchController');
 
 Route::resource('siteReviews', 'web\SiteReviewController');
+Route::post('p_siteReviews', 'web\SiteReviewController')->name('gust.reviews');
 
 Route::resource('points', 'PointController');
 
