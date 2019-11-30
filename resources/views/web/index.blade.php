@@ -106,6 +106,7 @@
                     <div class="matchs-vs">
                         <div class="vs-team">
                             <div class="team-btw-match">
+                                @if ($match_today)
                                 <ul>
                                     <li>
                                         <img src="{!! $match_today->image_one !!}" height="100px" width="100px" alt="">
@@ -117,6 +118,19 @@
                                         <span>{!! $match_today->team_two !!}</span>
                                     </li>
                                 </ul>
+                                    @else
+                                    <ul>
+                                        <li>
+                                            <img src="{!! asset('images/img-01_004.png') !!}" height="100px" width="100px" alt="">
+                                            <span>-</span>
+                                        </li>
+                                        <li class="vs"><span>vs</span></li>
+                                        <li>
+                                            <img src="{!! asset('images/img-01_002.png') !!}" height="100px" width="100px" alt="">
+                                            <span>-</span>
+                                        </li>
+                                    </ul>
+                                    @endif
                             </div>
                         </div>
                     </div>
@@ -126,21 +140,19 @@
         <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="row">
                 <div class="full">
-                    <div class="right-match-time">
-                        <h2>{!! $match_today->title !!}</h2>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        {{--                        <ul id="countdown-1" class="countdown">--}}
-                        {{--                            <li><span>{!! $match_today->match_date !!}</span></li>--}}
-                        {{--                            <li><span class="days">10 </span>Day </li>--}}
-                        {{--                            <li><span class="hours">5 </span>Hours </li>--}}
-                        {{--                            <li><span class="minutes">25 </span>Minutes </li>--}}
-                        {{--                            <li><span class="seconds">10 </span>Seconds </li>--}}
-                        {{--                        </ul>--}}
-                        <span>{!! $match_today->match_date !!}</span>
-                    </div>
+                   @if ($match_today)
+                        <div class="right-match-time">
+                            <h2>{!! $match_today->title !!}</h2>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <span>{!! $match_today->match_date !!}</span>
+                        </div>
+                       @else
+                       <h1>No Match to Day</h1>
+                   @endif
                 </div>
             </div>
         </div>
@@ -206,7 +218,7 @@
                         </div>
                     </aside>
                     <div class="content-widget top-story">
-{{--                    <div class="content-widget top-story" style="background: url(images/bg1.png);">--}}
+                        {{--                    <div class="content-widget top-story" style="background: url(images/bg1.png);">--}}
                         <div class="top-stroy-header">
                             <h2>Most Read <a href="#" class="fa fa-fa fa-angle-right"></a></h2>
                             <span class="date">{!! \Carbon\Carbon::now() !!}</span>
@@ -223,7 +235,8 @@
                     <div class="news-post-holder">
                         @foreach($blogs as $blog)
                             <div class="news-post-widget">
-                                <img class="img-responsive" height="430px" width="650px" src="{!! $blog->image !!}" alt="">
+                                <img class="img-responsive" height="430px" width="650px" src="{!! $blog->image !!}"
+                                     alt="">
                                 <div class="news-post-detail">
                                     <span class="date">{!! $blog->create_at !!}</span>
                                     <h2><a href="blog-detail.html">{!! Str::limit($blog->title, 45) !!}</a></h2>

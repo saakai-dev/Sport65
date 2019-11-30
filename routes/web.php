@@ -12,6 +12,9 @@
 */
 
 
+use App\Models\Match;
+use Carbon\Carbon;
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -19,8 +22,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 Route::get('/', 'web\HomeSiteController@index')->name('page');
+//Route::get(/**
+// * @return array
+// */ '/', function () {
+//
+//
+//    return ['data' => $match_data, 'toD' => $toDay, 'toM' => $toMorrow,];
+//});
+
 
 Route::resource('blogs', 'web\BlogController')->middleware('auth');
 

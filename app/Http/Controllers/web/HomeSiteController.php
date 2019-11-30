@@ -15,12 +15,10 @@ class HomeSiteController extends Controller
 {
     public function index()
     {
-        $toDay = Carbon::today();
-        $toMorrow = Carbon::tomorrow();
-//        $match_today = Match::orderByDesc('match_date')->get()->first();
-        $match_today = Match::where('match_date', $toDay)
-            ->orWhere('match_date', $toMorrow)
-            ->get()->first();
+        $toDay = Carbon::today()->format('Y-m-d');
+        $toMorrow = Carbon::tomorrow()->format('Y-m-d');
+//        $match_today = Match::whereBetween('match_date', [$toDay, $toMorrow])->first();
+//        $match_today = Match::whereBetween('match_date', [$toDay, $toMorrow])->first();
         $news = News::paginate(5);
         $blogs = Blog::paginate(5);
         $Matches = Match::orderBy('created_at', 'ASC')->get();
@@ -29,7 +27,7 @@ class HomeSiteController extends Controller
         $video = MultiMedia::first();
 //        return view('web.index', compact(['match_today', 'news', 'blog']));
         return view('web.index', [
-            'match_today' => $match_today,
+            'match_today' => $match_today=null,
             'news' => $news,
             'blogs' => $blogs,
             'most' => $most,
