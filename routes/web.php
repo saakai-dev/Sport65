@@ -20,7 +20,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index');
-Route::get('/', 'web\HomeSiteController@index');
+Route::get('/', 'web\HomeSiteController@index')->name('page');
 
 Route::resource('blogs', 'web\BlogController');
 
@@ -30,7 +30,8 @@ Route::resource('news66', 'web\NewsController');
 Route::resource('matches', 'web\MatchController');
 
 Route::resource('siteReviews', 'web\SiteReviewController');
-Route::post('p_siteReviews', 'web\SiteReviewController')->name('gust.reviews');
+Route::post('p_siteReviews', 'web\SiteReviewController@gustVote')->name('gust.reviews');
+Route::get('p_siteReviews', 'web\SiteReviewController@getVote')->name('get.reviews');
 
 Route::resource('points', 'PointController');
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Requests\CreateSiteReviewRequest;
 use App\Http\Requests\UpdateSiteReviewRequest;
+use App\Models\VoteReview;
 use App\Repositories\SiteReviewRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -133,9 +134,9 @@ class SiteReviewController extends AppBaseController
      *
      * @param int $id
      *
+     * @return Response
      * @throws \Exception
      *
-     * @return Response
      */
     public function destroy($id)
     {
@@ -152,5 +153,29 @@ class SiteReviewController extends AppBaseController
         Flash::success('Site Review deleted successfully.');
 
         return redirect(route('siteReviews.index'));
+    }
+
+
+    /**
+     * @param Request $request
+     * @return VoteReview
+     * @throws \Exception
+     */
+    public function gustVote(Request $request)
+    {
+        $vote = new VoteReview();
+        $vote->site_reviews_id = 1;
+        $vote->vote = $request->answer;
+//        $vote->vote = random_int(1,3);
+        $vote->save();
+        Flash::success('Vote successfully.');
+
+        return redirect(route('page'));
+
+    }
+
+    public function getVote()
+    {
+        return $votes = VoteReview::all();
     }
 }

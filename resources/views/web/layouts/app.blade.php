@@ -176,8 +176,29 @@
                     <div class="full">
                         {!! Form::open(['route' => 'gust.reviews', null => true]) !!}
                         <div class="form-group col-sm-12 col-lg-12">
-                            <label>    {!! Form::radio('answe', ''1,  null, ['id' => '', '']) !!}    </label>
+                            <label> Whata Aboute site?</label>
+                            <br>
+                            {{--                                <select name="answer" class="form-control selected">--}}
+                            {{--                                    <option value="V.Good">V.Good</option>--}}
+                            {{--                                    <option value="Good">Good</option>--}}
+                            {{--                                    <option value="Bad">Bad</option>--}}
+                            {{--                                </select>--}}
+                            <label> V.Good
+                                <input class="form-control" name="answer" type="radio" value="1">
+                            </label>
+                            <br>
+                            <label>Good
+                                <input class="form-control" name="answer" type="radio" value="2">
+                            </label>
+                            <br>
+                            <label>Bad
+                                <input class="form-control" name="answer" type="radio" value="3">
+                            </label>
                         </div>
+                        <div class="form-group col-sm-12">
+                            {!! Form::submit('vote', ['class' => 'btn btn-primary']) !!}
+                        </div>
+
                         {!! Form::close() !!}
 
                         {{--                        <div class="contact-footer">--}}
